@@ -1,9 +1,10 @@
 f_data = gsort(rand(1,10,"uniform")*160,2,'i')
 amplitude_generator = rand(1,10,"uniform")
 amplitude = diag(amplitude_generator)
+
 t = linspace(0,1,320+1)//sampling rate: 320Hz
-Y = sum(amplitude*cos(2*%pi*f_data'*t),1)
 f = linspace(0,160,3201) //max freq: 160Hz
+Y = sum(amplitude*cos(2*%pi*f_data'*t),1)
 
 EXP_RE =  cos(2*%pi*f'*t)
 EXP_IM = -sin(2*%pi*f'*t)
