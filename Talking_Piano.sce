@@ -1,6 +1,6 @@
 clear
-cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project")
-mopen("giegie.wav")
+cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project") //local repo address
+
 Piano_Freq = read(".\Piano_Freq.txt",88,1)'
 [Audio, Fs, bits] = wavread(".\Piano_A2.wav")
 t_interval = .5
@@ -20,8 +20,8 @@ Converted_Audio = matrix(Converted_Splitted_Audio', 1, prod(size(Converted_Split
 playsnd(Converted_Audio, rate = 44100)
 
 clf
-for i = 1 : 10
-    subplot(5, 2, i)
+for i = 1 : 8
+    subplot(4, 2, i)
     plot(f(1:size(f)(2) * 0.2), abs(Splitted_Audio_FFT(i , 1 : size(f)(2) * 0.2)))
 end
 
