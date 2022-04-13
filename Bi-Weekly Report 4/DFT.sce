@@ -15,8 +15,11 @@ EXP_IM = -sin(2 * %pi * f' * t)
 DFT_RE = Y * EXP_RE'
 DFT_IM = Y * EXP_IM'
 DFT_Val = abs(complex(DFT_RE, DFT_IM))
+
+//clf
 plot(f,DFT_Val, '.b')
 xtitle("Modulus of DFT Data","Frequency","Relative Intensity")
+
 mprintf("list of frequencies:")
 disp(f_data)
 mprintf("corresponding amplitudes:")
