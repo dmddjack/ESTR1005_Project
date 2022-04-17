@@ -1,6 +1,6 @@
 clear
 cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project") //change this to your local repo address
-[audio, fs, bits] = wavread(".\test_file\zero_calories.wav") //you can change it to other files
+[audio, fs, bits] = wavread(".\test_files\zero_calories.wav") //you can change it to other files
 
 t_interval = 0.0714286 // 1/14 seconds, = 220 bpm with 1/16 note
 interval = fs * t_interval
