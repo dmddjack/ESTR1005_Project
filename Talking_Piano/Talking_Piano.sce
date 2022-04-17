@@ -1,12 +1,12 @@
 clear
 cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project") //change this to your local repo address
-[audio, fs, bits] = wavread(".\Test_File\sample_song.wav") //you can change it to other files
+[audio, fs, bits] = wavread(".\test_file\zero_calories.wav") //you can change it to other files
 
 t_interval = 0.0714286 // 1/14 seconds, = 220 bpm with 1/16 note
 interval = fs * t_interval
 
 f = fs*(1:(interval))/interval
-piano_freq = read(".\Talking_Piano\Piano_Freq.txt",88,1)'
+piano_freq = read(".\talking_piano\Piano_Notes_Frequencies.txt",88,1)'
 for i = 1: 87
     gmean_piano_freq(i) = sqrt(piano_freq(i + 1) * piano_freq(i))
 end
@@ -58,13 +58,13 @@ clf
 
 for i = 1 : 4 : 16
     subplot(5, 4, i)
-    plot(f(1:size(f)(2) * 0.4), real(splitted_audio_fft(i * 25, 1 : size(f)(2) * 0.4)))
+    plot(f(1:size(f)(2) * 0.3), real(splitted_audio_fft(i * size(splitted_audio)(1) / 16, 1 : size(f)(2) * 0.3)))
     subplot(5, 4, i+1)
-    plot(f(1:size(f)(2) * 0.4), imag(splitted_audio_fft(i * 25, 1 : size(f)(2) * 0.4)))
+    plot(f(1:size(f)(2) * 0.3), imag(splitted_audio_fft(i * size(splitted_audio)(1) / 16, 1 : size(f)(2) * 0.3)))
     subplot(5, 4, i+2)
-    plot(f(1:size(f)(2) * 0.4), real(splitted_piano_fft(i * 25, 1 : size(f)(2) * 0.4)))
+    plot(f(1:size(f)(2) * 0.3), real(splitted_piano_fft(i * size(splitted_audio)(1) / 16, 1 : size(f)(2) * 0.3)))
     subplot(5, 4, i+3)
-    plot(f(1:size(f)(2) * 0.4), imag(splitted_piano_fft(i * 25, 1 : size(f)(2) * 0.4)))
+    plot(f(1:size(f)(2) * 0.3), imag(splitted_piano_fft(i * size(splitted_audio)(1) / 16, 1 : size(f)(2) * 0.3)))
 end
 subplot(5, 4, 17)
 plot(t, audio(1, :))
