@@ -1,6 +1,6 @@
 clear
 cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project") //change this to your local repo address
-[audio, fs, bits] = wavread(".\Test_File\giegie.wav") //you can change it to other files
+[audio, fs, bits] = wavread(".\Test_File\sample_song.wav") //you can change it to other files
 
 t_interval = 0.0714286 // 1/14 seconds, = 220 bpm with 1/16 note
 interval = fs * t_interval
@@ -37,7 +37,7 @@ for i = 1 : int(size(audio)(2)/(interval))
         end
     end
     for j = 1 : 87
-        if abs(splitted_piano_fft(i , f_index(j))) < max(abs(splitted_piano_fft(i , :))) * .2
+        if (j <= 12) or (abs(splitted_piano_fft(i , f_index(j))) < max(abs(splitted_piano_fft(i , :))) * .2)
             splitted_piano_fft(i , f_index(j)) = 0
         end
     end
@@ -48,9 +48,9 @@ for i = 1 : int(size(audio)(2)/(interval))
 end
 
 converted_piano = matrix(converted_splitted_piano', 1, prod(size(converted_splitted_piano)))
-wavwrite(converted_piano, 44100, ".\giegie_piano.wav")
+wavwrite(converted_piano, fs, ".\piano_audio.wav")
 
-playsnd(converted_piano, rate = 44100)
+playsnd(converted_piano, rate = fs)
 t = linspace(0, size(audio)(2)/fs , size(audio)(2))
 
 
@@ -67,9 +67,9 @@ for i = 1 : 4 : 16
     plot(f(1:size(f)(2) * 0.4), imag(splitted_piano_fft(i * 25, 1 : size(f)(2) * 0.4)))
 end
 subplot(5, 4, 17)
-plot(t, audio)
+plot(t, audio(1, :))
 subplot(5, 4, 18)
-plot(t(1:1477350), converted_piano)
+plot(t(1:size(converted_piano)(2)), converted_piano)
 //clf
 //subplot(5, 2, 9)
 //mapsound(Audio,.5,[0,1000],samplingRate = Fs)
