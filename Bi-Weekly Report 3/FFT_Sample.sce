@@ -1,6 +1,7 @@
+//This is a piece of code in Scilab help library
 //Frequency components of a signal
 //----------------------------------
-// build a noised signal sampled at 1000hz  containing  pure frequencies
+// build a noised signal sampled at 1000hz containing pure frequencies
 // at 50 and 70 Hz
 sample_rate = 1000;
 t = 0:1/sample_rate:1
