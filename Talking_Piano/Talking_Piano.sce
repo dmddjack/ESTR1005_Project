@@ -1,12 +1,12 @@
 clear
-cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project") //local repo address
-[audio, fs, bits] = wavread(".\giegie.wav")
+cd("D:\user\Documents\CUHK\2021-22 Sem 2\ESTR1005\Project") //change this to your local repo address
+[audio, fs, bits] = wavread(".\Test_File\giegie.wav") //you can change it to other files
 
-t_interval = 0.0714286 // 1/14 seconds
+t_interval = 0.0714286 // 1/14 seconds, = 220 bpm with 1/16 note
 interval = fs * t_interval
 
 f = fs*(1:(interval))/interval
-piano_freq = read(".\Piano_Freq.txt",88,1)'
+piano_freq = read(".\Talking_Piano\Piano_Freq.txt",88,1)'
 for i = 1: 87
     gmean_piano_freq(i) = sqrt(piano_freq(i + 1) * piano_freq(i))
 end
