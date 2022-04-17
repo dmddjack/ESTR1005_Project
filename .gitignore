@@ -1,6 +1,9 @@
 # file output
 piano_audio.wav
 
+#releases
+/release
+
 # Shared objects (inc. Windows DLLs)
 *.dll
 *.so
